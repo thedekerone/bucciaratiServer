@@ -1,0 +1,48 @@
+type Product {
+	_id: ID
+	title: String
+	tags: [String]
+	image: String
+	price: String
+}
+
+type Brand {
+	_id: ID
+	title: String
+	products: [Product]
+	image: String
+}
+
+union GlobalSearch = Product | Brand
+
+type Query {
+	#   "Devuelve todos los productos"
+	getProducts: [Product]
+	# "Devuelve un producto"
+	getProduct(id: ID!): Product
+	# "Devuelve las marcas"
+	getBrands: [Brand]
+	# "Ejecuta busqueda global"
+	searchItems(keyword: String!): [GlobalSearch]
+}
+
+input productInput {
+	title: String!
+	tags: [String]
+	image: String!
+	price: String!
+}
+
+input brandInput {
+	title: String!
+	image: String!
+}
+
+type Mutation {
+	# Crea un producto
+	createProduct(input: productInput!): Product
+	# Agrega un producto a una marca
+	addProduct(productID: ID!, brandID: ID!): Brand
+	# Crea una marca
+	createBrand(input: brandInput!): Brand
+}
