@@ -1,1 +1,0 @@
-{"ast":null,"code":"var routes = require('next-routes'); // Name   Page      Pattern\n\n\nmodule.exports = routes() // ----   ----      -----\n.add('producto').add('/', 'index').add('single');","map":null,"metadata":{},"sourceType":"script"}

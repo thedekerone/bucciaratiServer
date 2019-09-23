@@ -20,7 +20,7 @@ __webpack_require__.r(__webpack_exports__);
       headers = _ref.headers,
       initialState = _ref.initialState;
   return new apollo_boost__WEBPACK_IMPORTED_MODULE_1__["default"]({
-    uri: 'http://localhost:8000/api',
+    uri: 'https://chupetinps.herokuapp.com/',
     cache: new apollo_boost__WEBPACK_IMPORTED_MODULE_1__["InMemoryCache"]().restore(initialState || {})
   });
 }));
@@ -28,4 +28,4 @@ __webpack_require__.r(__webpack_exports__);
 /***/ })
 
 })
-//# sourceMappingURL=_app.js.49f15f756594f4475f80.hot-update.js.map
+//# sourceMappingURL=_app.js.37301c5723aaec511cfa.hot-update.js.map

@@ -3,6 +3,7 @@ type Product {
 	title: String
 	tags: [String]
 	image: String
+	discount: String
 	price: String
 }
 
@@ -29,6 +30,7 @@ type Query {
 input productInput {
 	title: String!
 	tags: [String]
+	discount: String!
 	image: String!
 	price: String!
 }

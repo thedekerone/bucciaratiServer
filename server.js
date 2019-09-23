@@ -9,7 +9,6 @@ const { join } = require('path');
 const cors = require('cors');
 const { ApolloServer, gql } = require('apollo-server');
 
-const port = process.env.port || 8000;
 const resolvers = require('./lib/resolvers');
 const isDev = process.env.NODE_ENV !== 'production';
 const path = require('path');
