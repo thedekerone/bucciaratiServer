@@ -25,6 +25,8 @@ type Query {
 	getBrands: [Brand]
 	# "Ejecuta busqueda global"
 	searchItems(keyword: String!): [GlobalSearch]
+	# "Busca un producto"
+	searchProducts(filter: String): [Product]
 }
 
 input productInput {
