@@ -7,6 +7,12 @@ type Product {
 	price: String
 }
 
+type User {
+	_id: ID
+	username: String
+	password: String
+}
+
 type Brand {
 	_id: ID
 	title: String
@@ -23,7 +29,10 @@ type Query {
 	getProduct(id: ID!): Product
 	# "Devuelve las marcas"
 	getBrands: [Brand]
+	# "devuelve los usuarios"
+	getUsers: [User]
 	# "Ejecuta busqueda global"
+
 	searchItems(keyword: String!): [GlobalSearch]
 	# "Busca un producto"
 	searchProducts(filter: String): [Product]
@@ -42,9 +51,16 @@ input brandInput {
 	image: String!
 }
 
+input userInput {
+	username: String!
+	password: String!
+}
+
 type Mutation {
 	# Crea un producto
 	createProduct(input: productInput!): Product
+	# Crea un usuario
+	createUser(input: userInput!): User
 	# Agrega un producto a una marca
 	addProduct(productID: ID!, brandID: ID!): Brand
 	# Crea una marca
