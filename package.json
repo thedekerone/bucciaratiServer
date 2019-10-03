@@ -10,6 +10,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"apollo-link-http": "^1.5.16",
 		"apollo-server": "^2.9.3",
 		"cors": "^2.8.5",
 		"dotenv": "^8.1.0",

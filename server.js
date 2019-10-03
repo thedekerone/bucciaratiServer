@@ -25,7 +25,6 @@ const server = new ApolloServer({
 		// get the user token from the headers
 		const data = { usuario: req.headers.usuario, password: req.headers.password };
 		const token = jwt.sign({ sub: data.usuario, password: data.password }, process.env.JWT_SECRET_TOKEN);
-		console.log(token);
 
 		let loggedIn = true;
 		try {
@@ -33,7 +32,7 @@ const server = new ApolloServer({
 			const user = decoded.sub;
 			// optionally block the user
 			// we could also check user roles/permissions here
-			if (!user) loggedIn = false;
+			if (user == 'null') loggedIn = false;
 
 			// add the user to the context
 			return { loggedIn };
