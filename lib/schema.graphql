@@ -30,7 +30,7 @@ type Query {
 	# "Devuelve las marcas"
 	getBrands: [Brand]
 	# "devuelve los usuarios"
-	getUsers: [User]
+	getUsers: User
 	# "Ejecuta busqueda global"
 
 	searchItems(keyword: String!): [GlobalSearch]
