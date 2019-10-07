@@ -64,7 +64,7 @@ type Mutation {
 	createUser(input: userInput!): User
 	# Agrega un producto a una marca
 	addProduct(productID: ID!, brandID: ID!): Brand
-	addProductToBag(productID: ID!, userID: ID!): Brand
+	addProductToBag(productID: ID!, userID: ID!): User
 	# Crea una marca
 	createBrand(input: brandInput!): Brand
 }
