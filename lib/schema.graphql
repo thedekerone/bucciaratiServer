@@ -11,6 +11,7 @@ type User {
 	_id: ID
 	username: String
 	password: String
+	bag: [Product]
 }
 
 type Brand {
@@ -63,6 +64,7 @@ type Mutation {
 	createUser(input: userInput!): User
 	# Agrega un producto a una marca
 	addProduct(productID: ID!, brandID: ID!): Brand
+	addProductToBag(productID: ID!, userID: ID!): Brand
 	# Crea una marca
 	createBrand(input: brandInput!): Brand
 }

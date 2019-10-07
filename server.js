@@ -31,8 +31,6 @@ const server = new ApolloServer({
 			const decoded = jwt.verify(token, process.env.JWT_SECRET_TOKEN);
 			const username = decoded.sub;
 			const password = decoded.password;
-			console.log(username);
-			console.log(password);
 			// optionally block the user
 			// we could also check user roles/permissions here
 			if (username == 'null') loggedIn = false;
