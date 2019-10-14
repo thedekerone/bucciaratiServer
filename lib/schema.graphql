@@ -12,6 +12,7 @@ type User {
 	username: String
 	password: String
 	bag: [Product]
+	stripe: String
 }
 
 type Brand {
