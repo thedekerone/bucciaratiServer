@@ -12,7 +12,7 @@ type User {
 	username: String
 	password: String
 	bag: [Product]
-	stripe: String
+	email: String
 }
 
 type Brand {
@@ -56,6 +56,7 @@ input brandInput {
 input userInput {
 	username: String!
 	password: String!
+	email: String!
 }
 
 type Mutation {
