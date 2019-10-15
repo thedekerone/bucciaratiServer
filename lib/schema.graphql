@@ -12,6 +12,7 @@ type User {
 	username: String
 	password: String
 	bag: [Product]
+	quantity: [String]
 	email: String
 }
 
@@ -70,5 +71,7 @@ type Mutation {
 	# Crea una marca
 	createBrand(input: brandInput!): Brand
 	# borra un producto
-	removeProductFromBag(productID: ID!, userID: ID!): User
+	removeProductFromBag(productID:ID!,userID: ID!): User
+	# update product quantity
+	updateQuantity(newQuantity:String!, productID: ID!,userID: ID!):User
 }
