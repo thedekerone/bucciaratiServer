@@ -20,11 +20,10 @@
     "graphql-tools": "^4.0.5",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.3.2",
-    "stripe": "^7.10.0",
-    "win-node-env": "^0.4.0"
+    "stripe": "^7.10.0"
   },
   "devDependencies": {
-    "nodemon": "^1.19.2",
+    "nodemon": "^1.19.4",
     "standard": "^14.3.1"
   }
 }

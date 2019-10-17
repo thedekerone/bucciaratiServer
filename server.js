@@ -1,26 +1,24 @@
-"use strict";
+'use strict'
 
-require("dotenv").config();
-const { makeExecutableSchema } = require("graphql-tools");
-const express = require("express");
-const gqlMiddleware = require("express-graphql");
-const { readFileSync } = require("fs");
-const { join } = require("path");
-const cors = require("cors");
-const { ApolloServer, gql } = require("apollo-server");
-const jwt = require("jsonwebtoken");
-const resolvers = require("./lib/resolvers");
+require('dotenv').config()
+
+const { readFileSync } = require('fs')
+const { join } = require('path')
+
+const { ApolloServer } = require('apollo-server')
+const jwt = require('jsonwebtoken')
+const resolvers = require('./lib/resolvers')
 
 // definiendo le esquema
 const typeDefs = readFileSync(
-  join(__dirname, "lib", "schema.graphql"),
+  join(__dirname, 'lib', 'schema.graphql'),
   //
-  "utf-8"
-);
+  'utf-8'
+)
 
 const server = new ApolloServer({
   cors: {
-    origin: "*",
+    origin: '*',
     credentials: true
   },
   typeDefs,
@@ -30,29 +28,29 @@ const server = new ApolloServer({
     const data = {
       usuario: req.headers.usuario,
       password: req.headers.password
-    };
+    }
     const token = jwt.sign(
       { sub: data.usuario, password: data.password },
       process.env.JWT_SECRET_TOKEN
-    );
+    )
 
-    let loggedIn = true;
+    let loggedIn = true
     try {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET_TOKEN);
-      const username = decoded.sub;
-      const password = decoded.password;
+      const decoded = jwt.verify(token, process.env.JWT_SECRET_TOKEN)
+      const username = decoded.sub
+      const password = decoded.password
       // optionally block the user
       // we could also check user roles/permissions here
-      if (username == "null") loggedIn = false;
+      if (username === 'null') loggedIn = false
 
       // add the user to the context
-      return { loggedIn, username, password };
+      return { loggedIn, username, password }
     } catch (err) {
-      loggedIn = false;
-      return { loggedIn };
+      loggedIn = false
+      return { loggedIn }
     }
   }
-});
-server.listen({ port: process.env.PORT || 5000 }).then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
-});
+})
+server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
+  console.log(`🚀 Server ready at ${url}`)
+})
