@@ -11,9 +11,14 @@ type User {
 	_id: ID
 	username: String
 	password: String
-	bag: [Product]
+	quantities: [ProductQuantity]
+
+}
+
+type ProductQuantity{
+	_id: ID
+	product: Product
 	quantity: Int
-	email: String
 }
 
 type Brand {
@@ -73,5 +78,5 @@ type Mutation {
 	# borra un producto
 	removeProductFromBag(productID:ID!,userID: ID!): User
 	# update product quantity
-	updateQuantity(newQuantity:String!, productID: ID!,userID: ID!):User
+	updateQuantity(newQuantity:Int!, productID: ID!,userID: ID!):User
 }
