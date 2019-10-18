@@ -17,7 +17,10 @@ const typeDefs = readFileSync(
 )
 
 const server = new ApolloServer({
-  cors: true,
+  cors: {
+    origin: 'https://bucciarati.mauriciofow.now.sh/*',
+    credentials: true
+  },
   typeDefs,
   resolvers,
   context: ({ req }) => {
