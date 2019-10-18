@@ -4,7 +4,7 @@ require('dotenv').config()
 
 const { readFileSync } = require('fs')
 const { join } = require('path')
-
+const cors = require('cors')
 const { ApolloServer } = require('apollo-server')
 const jwt = require('jsonwebtoken')
 const resolvers = require('./lib/resolvers')
@@ -17,10 +17,7 @@ const typeDefs = readFileSync(
 )
 
 const server = new ApolloServer({
-  cors: {
-    origin: '*',
-    credentials: true
-  },
+  cors: true,
   typeDefs,
   resolvers,
   context: ({ req }) => {
@@ -51,6 +48,7 @@ const server = new ApolloServer({
     }
   }
 })
+
 server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
   console.log(`🚀 Server ready at ${url}`)
 })
