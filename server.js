@@ -56,7 +56,7 @@ const server = new ApolloServer({
 
 const app = express()
 var corsOptions = {
-  origin: 'https://bucciarati.mauriciofow.now.sh',
+  origin: '*',
   credentials: true // <-- REQUIRED backend setting
 }
 
