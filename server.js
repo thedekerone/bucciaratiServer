@@ -20,7 +20,7 @@ const typeDefs = readFileSync(
 
 const server = new ApolloServer({
   cors: {
-    origin: 'https://bucciarati.mauriciofow.now.sh/*',
+    origin: '*',
     credentials: true
   },
   typeDefs,
@@ -31,6 +31,8 @@ const server = new ApolloServer({
       usuario: req.headers.usuario,
       password: req.headers.password
     }
+      console.log(data)
+      if(!data.usuario) return {loggedIn:true}
     const token = jwt.sign(
       { sub: data.usuario, password: data.password },
       process.env.JWT_SECRET_TOKEN
@@ -63,12 +65,17 @@ var corsOptions = {
 app.use(cors(corsOptions))
 app.use(cookieParser())
 app.use((req, res, next) => {
-  // checks for user in cookies and adds userId to the requests
-  const { token } = req.cookies
-  if (token) {
-    const { userId } = jwt.verify(token, process.env.JWT_SECRET_TOKEN)
-    req.userId = userId
-  }
+    try {
+
+        // checks for user in cookies and adds userId to the requests
+        const { token } = req.cookies
+        if (token) {
+            const { userId } = jwt.verify(token, process.env.JWT_SECRET_TOKEN)
+            req.userId = userId
+        }
+    } catch (error) {
+       console.log(error)
+    }
   next()
 })
 
