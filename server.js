@@ -20,7 +20,7 @@ const typeDefs = readFileSync(
 
 const server = new ApolloServer({
   cors: {
-    origin: '*',
+    origin: 'https://bucciarati.vercel.app/*',
     credentials: true
   },
   typeDefs,
