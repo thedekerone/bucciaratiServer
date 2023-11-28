@@ -25,6 +25,7 @@ const server = new ApolloServer({
   },
   typeDefs,
   resolvers,
+    graphqlPath: "api",
   context: ({ req }) => {
     // get the user token from the headers
     const data = {
