@@ -59,7 +59,7 @@ const server = new ApolloServer({
 
 const app = express()
 var corsOptions = {
-  origin: '*',
+  origin: 'https://bucciarati.vercel.app/*',
   credentials: true // <-- REQUIRED backend setting
 }
 
