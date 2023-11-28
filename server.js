@@ -21,6 +21,7 @@ const typeDefs = readFileSync(
 const server = new ApolloServer({
   cors: {
     origin: 'https://bucciarati.vercel.app/*',
+
     credentials: true
   },
   typeDefs,
@@ -58,8 +59,9 @@ const server = new ApolloServer({
 
 const app = express()
 var corsOptions = {
-  origin: 'https://bucciarati.vercel.app/*',
-  credentials: true // <-- REQUIRED backend setting
+  origin: 'https://bucciarati.vercel.app',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // If you need to support cookies or authorization headers
 }
 
 app.use(cors(corsOptions))
