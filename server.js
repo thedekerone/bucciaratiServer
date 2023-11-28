@@ -84,7 +84,7 @@ app.use((req, res, next) => {
 server.applyMiddleware({
   app,
   path: '/',
-  cors: false // disables the apollo-server-express cors to allow the cors middleware use
+  cors: true // disables the apollo-server-express cors to allow the cors middleware use
 })
 
 app.listen({ port: process.env.PORT || 4000 }, () =>
